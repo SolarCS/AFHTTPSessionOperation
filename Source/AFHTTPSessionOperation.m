@@ -41,12 +41,18 @@
 
     AFHTTPSessionOperation *operation = [[self alloc] init];
     
-    NSURLSessionTask *task = [manager dataTaskWithHTTPMethod:method URLString:URLString parameters:parameters uploadProgress:uploadProgress downloadProgress:downloadProgress success:^(NSURLSessionDataTask *task, id responseObject){
+    NSURLSessionTask *task = [manager dataTaskWithHTTPMethod:method
+                   URLString:URLString
+                  parameters:parameters
+                     headers:nil
+              uploadProgress:uploadProgress
+            downloadProgress:downloadProgress
+                     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
             success(task, responseObject);
         }
         [operation completeOperation];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
             failure(task, error);
         }
