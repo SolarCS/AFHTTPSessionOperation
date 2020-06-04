@@ -34,6 +34,7 @@
                           HTTPMethod:(NSString *)method
                            URLString:(NSString *)URLString
                           parameters:(id)parameters
+                            headers:(id)headers
                       uploadProgress:(void (^)(NSProgress *uploadProgress)) uploadProgress
                     downloadProgress:(void (^)(NSProgress *downloadProgress)) downloadProgress
                              success:(void (^)(NSURLSessionDataTask *, id))success
@@ -44,7 +45,7 @@
     NSURLSessionTask *task = [manager dataTaskWithHTTPMethod:method
                    URLString:URLString
                   parameters:parameters
-                     headers:nil
+                     headers:headers
               uploadProgress:uploadProgress
             downloadProgress:downloadProgress
                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
